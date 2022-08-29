@@ -12,6 +12,6 @@ namespace InfernumModeMusic.MusicOverrides
             InfernumModeMusic.CanPlayMusic(NPCID.Spazmatism) || InfernumModeMusic.CanPlayMusic(NPCID.Retinazer) ||
             InfernumModeMusic.CanPlayMusic(NPCID.SkeletronPrime) || InfernumModeMusic.CanPlayMusic(NPCID.TheDestroyer);
 
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossLow;
+        public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
     }
 }

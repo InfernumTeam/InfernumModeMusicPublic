@@ -10,6 +10,6 @@ namespace InfernumModeMusic.MusicOverrides
 
         public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.CanPlayMusic(NPCID.SkeletronHead);
 
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossLow;
+        public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
     }
 }
