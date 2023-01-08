@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace InfernumModeMusic.MusicOverrides
@@ -13,7 +12,7 @@ namespace InfernumModeMusic.MusicOverrides
                 if (InfernumModeMusic.Infernum != null && DraedonThemeTimer > 0)
                 {
                     DraedonThemeTimer++;
-                    if (DraedonThemeTimer >= 5120f)
+                    if (DraedonThemeTimer >= 5122f)
                         DraedonThemeTimer = 0f;
                     else
                         return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Draedon");
@@ -34,8 +33,9 @@ namespace InfernumModeMusic.MusicOverrides
 
         public static bool SkyActive => (bool)InfernumModeMusic.Calamity.Code.GetType("CalamityMod.Skies.ExoMechsSky").GetProperty("CanSkyBeActive").GetValue(null);
 
-        public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.Calamity != null && InfernumModeMusic.InfernumActive && (InfernumModeMusic.CanPlayMusic(InfernumModeMusic.Calamity.Find<ModNPC>("Draedon").Type) || SkyActive);
-        
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
+        public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.Calamity != null && InfernumModeMusic.InfernumActive && (InfernumModeMusic.CanPlayMusic(InfernumModeMusic.Calamity.Find<ModNPC>("Draedon").Type) || SkyActive) && 
+            !(bool)InfernumModeMusic.Calamity.Code.GetType("CalamityMod.Events.BossRushEvent").GetField("BossRushActive").GetValue(null);
+
+        public override SceneEffectPriority Priority => (SceneEffectPriority)10;
     }
 }

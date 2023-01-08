@@ -18,6 +18,6 @@ namespace InfernumModeMusic.MusicOverrides
             Main.musicFade[Main.curMusic] = 1f;
         }
 
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
+        public override SceneEffectPriority Priority => (SceneEffectPriority)10;
     }
 }

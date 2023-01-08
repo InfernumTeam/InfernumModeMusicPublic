@@ -10,6 +10,6 @@ namespace InfernumModeMusic.MusicOverrides
 
         public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.CanPlayMusic(NPCID.Plantera);
 
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
+        public override SceneEffectPriority Priority => (SceneEffectPriority)10;
     }
 }
