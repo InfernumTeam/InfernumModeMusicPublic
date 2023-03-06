@@ -60,11 +60,9 @@ namespace InfernumModeMusic
         {
             Infernum = null;
             ModLoader.TryGetMod("InfernumMode", out Infernum);
-
             Calamity = null;
             ModLoader.TryGetMod("CalamityMod", out Calamity);
 
-            OverrideMusicBox(ItemID.MusicBoxBoss3, MusicLoader.GetMusicSlot(this, "Sounds/Music/Boss3"), TileID.MusicBoxes, 36 * 12);
             OverrideMusicBox(ItemID.MusicBoxLunarBoss, MusicLoader.GetMusicSlot(this, "Sounds/Music/MoonLord"), TileID.MusicBoxes, 36 * 32);
         }
     }
