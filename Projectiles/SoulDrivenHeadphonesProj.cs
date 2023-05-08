@@ -244,6 +244,15 @@ namespace InfernumModeMusic.Projectiles
 
             new()
             {
+                HoverText = "One's Ending, Another's Beginning - Wall of Flesh",
+                TrackName = "WallOfFlesh",
+                HoverTextColor = () => new(158, 48, 83),
+                UnlockCondition = () => Main.hardMode,
+                BossIconTexture = TextureAssets.NpcHeadBoss[22]
+            },
+
+            new()
+            {
                 HoverText = "Crowned before One's End - Queen Slime",
                 TrackName = "QueenSlime",
                 HoverTextColor = () => MulticolorLerp(Main.GlobalTimeWrappedHourly * 0.25f % 1f, Color.DeepPink, Color.HotPink, Color.Cyan * 1.3f),
