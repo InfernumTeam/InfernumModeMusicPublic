@@ -253,6 +253,15 @@ namespace InfernumModeMusic.Projectiles
 
             new()
             {
+                HoverText = "Misanthropic Encounters - Minibosses",
+                TrackName = "Minibosses",
+                HoverTextColor = () => Color.Orange,
+                UnlockCondition = () => Main.hardMode,
+                BossIconTexture = ModContent.Request<Texture2D>("InfernumModeMusic/Items/DreadnautilusMapIcon")
+            },
+
+            new()
+            {
                 HoverText = "Crowned before One's End - Queen Slime",
                 TrackName = "QueenSlime",
                 HoverTextColor = () => MulticolorLerp(Main.GlobalTimeWrappedHourly * 0.25f % 1f, Color.DeepPink, Color.HotPink, Color.Cyan * 1.3f),
@@ -276,6 +285,15 @@ namespace InfernumModeMusic.Projectiles
                 HoverTextColor = () => ColorSwap(Color.Pink, Color.Lime, 2.67f),
                 UnlockCondition = () => NPC.downedPlantBoss,
                 BossIconTexture = TextureAssets.NpcHeadBoss[12]
+            },
+
+            new()
+            {
+                HoverText = "Icon of the Sun - Golem",
+                TrackName = "Golem",
+                HoverTextColor = () => new(168, 64, 5),
+                UnlockCondition = () => NPC.downedGolemBoss,
+                BossIconTexture = TextureAssets.NpcHeadBoss[5]
             },
 
             new()
@@ -326,6 +344,16 @@ namespace InfernumModeMusic.Projectiles
 
             new()
             {
+                HoverText = "Vocitus Terminus - The Eidolon Wyrm",
+                TrackName = "AdultEidolonWyrm",
+                HoverTextColor = () => Color.Navy,
+                UnlockCondition = () => (bool)InfernumModeMusic.Calamity?.Call("GetBossDowned", "adultwyrm"),
+                BossIconTexture = InfernumModeMusic.Calamity is null ? TextureAssets.MagicPixel : ModContent.Request<Texture2D>("CalamityMod/NPCs/AdultEidolonWyrm/AdultEidolonWyrmHead_Head_Boss"),
+                RequiresCalamity = true
+            },
+
+            new()
+            {
                 HoverText = "Inferior Fabrications (Exo Remix) - The Exo Mechs",
                 TrackName = "ExoMechBossesOld",
                 HoverTextColor = () => Color.Lerp(MulticolorLerp(Main.GlobalTimeWrappedHourly * 0.27f % 1f, ExoPalette), Color.Silver, 0.4f),
@@ -356,6 +384,16 @@ namespace InfernumModeMusic.Projectiles
 
             new()
             {
+                HoverText = "Scars of Calamity - Calamitas",
+                TrackName = "Calamitas",
+                HoverTextColor = () => Color.Red,
+                UnlockCondition = () => (bool)InfernumModeMusic.Calamity?.Call("GetBossDowned", "Calamitas"),
+                BossIconTexture = InfernumModeMusic.Calamity is null ? TextureAssets.MagicPixel : ModContent.Request<Texture2D>("CalamityMod/NPCs/SupremeCalamitas/HoodedHeadIcon"),
+                RequiresCalamity = true
+            },
+
+            new()
+            {
                 HoverText = "Storm Before Dawn - Infernum",
                 TrackName = "StormBeforeDawn",
                 HoverTextColor = () => Color.HotPink,
@@ -380,10 +418,6 @@ namespace InfernumModeMusic.Projectiles
         public ref float Time => ref Projectile.ai[0];
 
         public ref float DisappearCountdown => ref Projectile.ai[1];
-
-        public const float MaxHologramWidth = 226f;
-
-        public const float MaxHologramHeight = 272f;
 
         public override string Texture => "InfernumModeMusic/Items/SoulDrivenHeadphones_Head";
 
