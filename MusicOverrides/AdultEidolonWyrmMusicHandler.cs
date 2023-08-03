@@ -7,7 +7,7 @@ namespace InfernumModeMusic.MusicOverrides
     {
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/AdultEidolonWyrm");
 
-        public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.Calamity != null && InfernumModeMusic.CanPlayMusic(InfernumModeMusic.Calamity.Find<ModNPC>("AdultEidolonWyrmHead").Type);
+        public override bool IsSceneEffectActive(Player player) => InfernumModeMusic.Calamity != null && InfernumModeMusic.CanPlayMusic(InfernumModeMusic.Calamity.Find<ModNPC>("PrimordialWyrmHead").Type);
 
         public override SceneEffectPriority Priority => (SceneEffectPriority)10;
     }

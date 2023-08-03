@@ -10,14 +10,7 @@ namespace InfernumModeMusic.Items
 {
     public class SoulDrivenHeadphones : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Soul-Driven Headphones");
-            Tooltip.SetDefault("Allows you to pick and play custom Infernum music of defeated bosses, and to toggle a special boss battle theme\n" +
-                "As you hold onto them, you vaguely feel a mystical presence\n" +
-                "You can also hear the sounds of instruments passionately playing");
-            SacrificeTotal = 1;
-        }
+        public override void SetStaticDefaults() => Item.ResearchUnlockCount = 1;
 
         public override void SetDefaults()
         {

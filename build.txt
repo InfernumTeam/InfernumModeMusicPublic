@@ -1,3 +1,3 @@
 displayName = Infernum Mode Music
 author = Dominic Karma
-version = 1.9.15
+version = 1.9.22
