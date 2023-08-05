@@ -12,10 +12,6 @@ namespace InfernumModeMusic
 
         internal static Mod Calamity;
 
-        internal static IDictionary<int, int> SoundLoaderMusicToItem => (Dictionary<int, int>)typeof(MusicLoader).GetField("musicToItem", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
-        internal static IDictionary<int, int> SoundLoaderItemToMusic => (Dictionary<int, int>)typeof(MusicLoader).GetField("itemToMusic", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
-        internal static Dictionary<int, Dictionary<int, int>> SoundLoaderTileToMusic => (Dictionary<int, Dictionary<int, int>>)typeof(MusicLoader).GetField("tileToMusic", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
-
         public static bool InfernumActive
         {
             get
@@ -46,15 +42,6 @@ namespace InfernumModeMusic
             return result;
         }
 
-        public static void OverrideMusicBox(int itemType, int musicSlot, int tileType, int tileFrameY)
-        {
-            SoundLoaderMusicToItem[musicSlot] = itemType;
-            SoundLoaderItemToMusic[itemType] = musicSlot;
-            if (!SoundLoaderTileToMusic.ContainsKey(tileType))
-                SoundLoaderTileToMusic[tileType] = new Dictionary<int, int>();
-
-            SoundLoaderTileToMusic[tileType][tileFrameY] = musicSlot;
-        }
 
         public override void Load()
         {
@@ -63,7 +50,6 @@ namespace InfernumModeMusic
             Calamity = null;
             ModLoader.TryGetMod("CalamityMod", out Calamity);
 
-            OverrideMusicBox(ItemID.MusicBoxLunarBoss, MusicLoader.GetMusicSlot(this, "Sounds/Music/MoonLord"), TileID.MusicBoxes, 36 * 32);
         }
     }
 }
