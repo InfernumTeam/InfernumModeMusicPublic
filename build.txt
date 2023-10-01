@@ -1,8 +1,8 @@
 displayName = Infernum Mode Music
 author = Dominic Karma, Toasty
-version = 1.9.23
+version = 1.9.31
 hideCode = false
 includeSource = true
 hideResources = false
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
-homepage = https://github.com/DominicKarma/InfernumModePublic
+homepage = https://discord.gg/S9duFWAnzD

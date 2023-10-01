@@ -3,4 +3,4 @@ Do note that PinpinNeon, the musician and owner of these tracks, intends and wis
 While you're free to use this music mod outside of infernum mode, the music is tailored for said mode specifically, and you may find that the tracks will feel a lot more special if you do decide to use this mod exclusively for infernum fights!
 It's all up to you, however- do whatever you feel is best!
 
-Please report any bugs/issues via the Issues tab on the linked InfernumModPublic github home page.
+Please report any bugs/issues via the Bug-Reports forum on the discord server.
