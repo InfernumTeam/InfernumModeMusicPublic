@@ -21,7 +21,7 @@ namespace InfernumModeMusic.MusicOverrides
                 if (!SkyActive)
                     return MusicLoader.GetMusicSlot(InfernumModeMusic.Calamity, "Sounds/Music/DraedonAmbience");
 
-                return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ExoMechBosses");
+                return SecondThemeShouldPlay ? MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ZenithFabrications") : MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ExoMechBosses");
             }
         }
 
@@ -29,6 +29,21 @@ namespace InfernumModeMusic.MusicOverrides
         {
             get => (float)InfernumModeMusic.Infernum.Code.GetType("InfernumMode.InfernumMode").GetProperty("DraedonThemeTimer").GetValue(null);
             set => InfernumModeMusic.Infernum.Code.GetType("InfernumMode.InfernumMode").GetProperty("DraedonThemeTimer").SetValue(null, value);
+        }
+
+        public static bool SecondThemeShouldPlay
+        {
+            get
+            {
+                if (InfernumModeMusic.Infernum == null)
+                    return false;
+
+                var property = InfernumModeMusic.Infernum.Code.GetType("InfernumMode.Content.BehaviorOverrides.BossAIs.Draedon.ExoMechManagement").GetProperty("SecondThemeShouldPlay");
+                if (property != null)
+                    return (bool)property.GetValue(null);
+                else
+                    return false;
+            }
         }
 
         public static bool SkyActive => (bool)InfernumModeMusic.Calamity.Code.GetType("CalamityMod.Skies.ExoMechsSky").GetProperty("CanSkyBeActive").GetValue(null);
