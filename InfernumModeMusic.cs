@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace InfernumModeMusic
@@ -12,6 +13,8 @@ namespace InfernumModeMusic
         internal static Mod Infernum;
 
         internal static Mod Calamity;
+
+        internal static Mod MusicDisplay;
 
         public static bool InfernumActive
         {
@@ -50,9 +53,16 @@ namespace InfernumModeMusic
             ModLoader.TryGetMod("InfernumMode", out Infernum);
             Calamity = null;
             ModLoader.TryGetMod("CalamityMod", out Calamity);
-        }
+		}
 
-        public override object Call(params object[] args)
+		public override void PostSetupContent()
+		{
+			MusicDisplay = null;
+			if (ModLoader.TryGetMod("MusicDisplay", out MusicDisplay))
+				MusicDisplayModCalls();
+		}
+
+		public override object Call(params object[] args)
         {
             if (args is null || args.Length <= 0)
                 return new ArgumentException("ERROR: No function name specified. First argument must be a function name.");
@@ -64,5 +74,39 @@ namespace InfernumModeMusic
                 return InfernumMusicConfig.Instance.OverrideCalTheme;
             return null;
         }
-    }
+
+        private void MusicDisplayModCalls()
+        {
+			void AddMusic(string path, string name)
+			{
+				LocalizedText author = Language.GetText("Mods.InfernumModeMusic.MusicDisplay." + name + ".Author");
+				LocalizedText displayName = Language.GetText("Mods.InfernumModeMusic.MusicDisplay." + name + ".DisplayName");
+				MusicDisplay.Call("AddMusic", (short)MusicLoader.GetMusicSlot(this, path), displayName, author, DisplayName);
+			}
+
+            AddMusic("Sounds/Music/AdultEidolonWyrm", "AdultEidolonWyrm");
+			AddMusic("Sounds/Music/BrainOfCthulhu", "BrainOfCthulhu");
+			AddMusic("Sounds/Music/Calamitas", "Calamitas");
+			AddMusic("Sounds/Music/LunaticCultist", "LunaticCultist");
+			AddMusic("Sounds/Music/DukeFishron", "DukeFishron");
+			AddMusic("Sounds/Music/EaterOfWorlds", "EaterOfWorlds");
+			AddMusic("Sounds/Music/EmpressOfLight", "EmpressOfLight");
+			AddMusic("Sounds/Music/EyeOfCthulhu", "EyeOfCthulhu");
+			AddMusic("Sounds/Music/Golem", "Golem");
+			AddMusic("Sounds/Music/KingSlime", "KingSlime");
+			AddMusic("Sounds/Music/MechBosses", "MechBosses");
+			AddMusic("Sounds/Music/Minibosses", "Minibosses");
+			AddMusic("Sounds/Music/MoonLord", "MoonLord");
+			AddMusic("Sounds/Music/Plantera", "Plantera");
+			AddMusic("Sounds/Music/QueenBee", "QueenBee");
+			AddMusic("Sounds/Music/QueenSlime", "QueenSlime");
+			AddMusic("Sounds/Music/Skeletron", "Skeletron");
+			AddMusic("Sounds/Music/WallOfFlesh", "WallOfFlesh");
+			AddMusic("Sounds/Music/Draedon", "Draedon");
+			AddMusic("Sounds/Music/ExoMechBosses", "ExoMechBosses");
+			AddMusic("Sounds/Music/ZenithFabrications", "ZenithFabrications");
+			AddMusic("Sounds/Music/TitleScreen", "TitleScreen");
+			AddMusic("Sounds/Music/StormBeforeDawn", "StormBeforeDawn");
+		}
+	}
 }
