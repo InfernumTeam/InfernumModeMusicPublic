@@ -19,7 +19,7 @@ namespace InfernumModeMusic.MusicOverrides
                 }
 
                 if (!SkyActive)
-                    return MusicLoader.GetMusicSlot(InfernumModeMusic.Calamity, "Sounds/Music/DraedonAmbience");
+                    return MusicLoader.GetMusicSlot(InfernumModeMusic.Calamity, "Sounds/Music/DraedonsAmbience");
 
                 return SecondThemeShouldPlay ? MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ZenithFabrications") : MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ExoMechBosses");
             }
