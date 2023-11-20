@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
@@ -18,6 +19,6 @@ namespace InfernumModeMusic
             get; set;
         }
 
-        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message) => false;
+        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => false;
     }
 }
