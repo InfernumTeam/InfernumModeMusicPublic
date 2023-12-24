@@ -83,7 +83,7 @@ namespace InfernumModeMusic.Projectiles
                 float indexAngle = MathHelper.TwoPi * indexRatio - MathHelper.PiOver2;
                 Vector2 drawPosition = center;
                 if (!IsSpecialTheme)
-                    drawPosition += indexAngle.ToRotationVector2() * 132f;
+                    drawPosition += indexAngle.ToRotationVector2() * 155f;
 
                 Vector2 backgroundOrigin = background.Size() * 0.5f;
                 Rectangle iconFrame = icon.Frame(1, 3, 0, (int)(indexRatio * 10f) % 3);
@@ -94,7 +94,7 @@ namespace InfernumModeMusic.Projectiles
                 // Determine if the mouse is hovering over the icon.
                 // If it is, it should display the hover text and increase in size.
                 bool hoveringOverBackground = drawArea.Contains(Main.MouseScreen.ToPoint());
-                Scale = MathHelper.Clamp(Scale + hoveringOverBackground.ToDirectionInt() * 0.04f, 1f, 1.35f);
+                Scale = MathHelper.Clamp(Scale + hoveringOverBackground.ToDirectionInt() * 0.04f, 1f, 1.2f);
 
                 // Draw the icon.
                 Main.spriteBatch.Draw(background, drawPosition, null, Color.White * opacity, 0f, backgroundOrigin, scale, 0, 0f);
@@ -368,11 +368,21 @@ namespace InfernumModeMusic.Projectiles
                 TrackName = "ExoMechBosses",
                 HoverTextColor = () => MulticolorLerp(Main.GlobalTimeWrappedHourly * 0.32f % 1f, ExoPalette),
                 UnlockCondition = () => (bool)InfernumModeMusic.Calamity?.Call("GetBossDowned", "ExoMechs"),
-                BossIconTexture =InfernumModeMusic.Calamity is null ? TextureAssets.MagicPixel : ModContent.Request<Texture2D>("CalamityMod/NPCs/ExoMechs/Ares/AresBody_Head_Boss"),
+                BossIconTexture = InfernumModeMusic.Calamity is null ? TextureAssets.MagicPixel : ModContent.Request<Texture2D>("CalamityMod/NPCs/ExoMechs/Ares/AresBody_Head_Boss"),
                 RequiresCalamity = true
             },
 
-            new()
+			new()
+			{
+				HoverText = "Zenith Fabrications - The Exo Mechs",
+				TrackName = "ZenithFabrications",
+				HoverTextColor = () => MulticolorLerp(Main.GlobalTimeWrappedHourly * 0.32f % 1f, ExoPalette),
+				UnlockCondition = () => (bool)InfernumModeMusic.Calamity?.Call("GetBossDowned", "ExoMechs"),
+				BossIconTexture = InfernumModeMusic.Calamity is null ? TextureAssets.MagicPixel : ModContent.Request<Texture2D>("CalamityMod/NPCs/ExoMechs/Ares/AresBody_Head_Boss"),
+				RequiresCalamity = true
+			},
+
+			new()
             {
                 HoverText = "Their Fabricator - Draedon",
                 TrackName = "Draedon",
@@ -584,7 +594,7 @@ namespace InfernumModeMusic.Projectiles
                 if (icons.Count <= 1)
                     indexCompletion = 0.5f;
 
-                bool clicked = icons[i].Draw(Owner, Projectile.Center - Vector2.UnitY * 180f - Main.screenPosition, indexCompletion, opacity, out Vector2 localTextDrawPosition, out Color localTextColor, out string localText) && opacity >= 1f;
+                bool clicked = icons[i].Draw(Owner, Projectile.Center - Vector2.UnitY * 210f - Main.screenPosition, indexCompletion, opacity, out Vector2 localTextDrawPosition, out Color localTextColor, out string localText) && opacity >= 1f;
                 if (!string.IsNullOrEmpty(localText) && opacity >= 1f)
                 {
                     text = localText;
