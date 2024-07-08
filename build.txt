@@ -1,5 +1,5 @@
 displayName = Infernum Mode Music
-author = Dominic Karma, Toasty
+author = Dominic Karma, Imogen
 version = 2.0.1
 hideCode = false
 includeSource = true
